@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgdbnfpmnqrny"]
+
+[ext_resource type="Texture2D" uid="uid://dy1buy4pxbdqn" path="res://assets/sprites/tile-map-node.png" id="1_6nkj7"]
+[ext_resource type="PackedScene" uid="uid://d2fpopx3dq6i4" path="res://playable_slime.tscn" id="2_ip2gj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hp8j1"]
+texture = ExtResource("1_6nkj7")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_fv60v"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_hp8j1")
+
+[node name="3_tile-map" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_fv60v")
+format = 2
+layer_0/tile_data = PackedInt32Array(196605, 0, 0, 196607, 0, 0, 131073, 0, 0, 131075, 0, 0, 196603, 0, 0, 131077, 0, 0, 196601, 0, 0)
+
+[node name="2_playable-slime" parent="." instance=ExtResource("2_ip2gj")]

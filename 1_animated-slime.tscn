@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://fe4qw33qahfn"]
+
+[ext_resource type="Texture2D" uid="uid://bbn4p48ypvur2" path="res://assets/sprites/slime.png" id="1_14keh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6g1v"]
+atlas = ExtResource("1_14keh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udf18"]
+atlas = ExtResource("1_14keh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_se54o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6g1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udf18")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[node name="animated-slime" type="CharacterBody2D"]
+
+[node name="body" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -6)
+sprite_frames = SubResource("SpriteFrames_se54o")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.8272

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh216mbek3d2t"]
+
+[ext_resource type="PackedScene" uid="uid://d2fpopx3dq6i4" path="res://playable_slime.tscn" id="1_j2bcr"]
+[ext_resource type="Script" path="res://playable_slime-proper.gd" id="2_nw6jj"]
+
+[node name="3_playable-slime-proper" type="Node2D"]
+
+[node name="3_playable-slime-proper" parent="." instance=ExtResource("1_j2bcr")]
+script = ExtResource("2_nw6jj")

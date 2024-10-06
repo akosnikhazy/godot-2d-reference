@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=4 uid="uid://dxwe6totp3e3j"]
+
+[ext_resource type="Texture2D" uid="uid://dy1buy4pxbdqn" path="res://assets/sprites/tile-map-node.png" id="1_b1sna"]
+[ext_resource type="PackedScene" uid="uid://bh216mbek3d2t" path="res://3_playable_slime_scene.tscn" id="1_wf5ko"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_q355i"]
+distance = -60.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ljoyb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f7j2n"]
+texture = ExtResource("1_b1sna")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_6retd"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_f7j2n")
+
+[node name="reference" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(6, 6)
+
+[node name="3_playable-slime-proper" parent="." instance=ExtResource("1_wf5ko")]
+position = Vector2(0, -15)
+
+[node name="ground" type="StaticBody2D" parent="."]
+
+[node name="floor" type="CollisionShape2D" parent="ground"]
+position = Vector2(-3, 40)
+shape = SubResource("WorldBoundaryShape2D_q355i")
+
+[node name="wall-west" type="CollisionShape2D" parent="ground"]
+position = Vector2(-96, 35)
+rotation = 1.57079
+shape = SubResource("WorldBoundaryShape2D_ljoyb")
+
+[node name="wall-east" type="CollisionShape2D" parent="ground"]
+position = Vector2(100, 41)
+rotation = 4.71238
+shape = SubResource("WorldBoundaryShape2D_ljoyb")
+
+[node name="TileMap" type="TileMap" parent="ground"]
+tile_set = SubResource("TileSet_6retd")
+rendering_quadrant_size = 32
+format = 2
+
+[node name="Layer0" type="TileMapLayer" parent="ground/TileMap"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_6retd")
+rendering_quadrant_size = 32
